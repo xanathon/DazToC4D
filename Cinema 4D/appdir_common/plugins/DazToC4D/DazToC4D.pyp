@@ -130,7 +130,7 @@ class convertMaterials:
         bmpPath = r''
 
         #To all Octane mats... With or without Bitmap:
-        if self.matType == 'Octane':          
+        if self.matType == 'Octane':
             mat[c4d.OCT_MATERIAL_TYPE] = 2511  # Glossy
             mat[c4d.OCT_MATERIAL_DIFFUSE_COLOR] = sourceMat[c4d.MATERIAL_COLOR_COLOR]
             mat[c4d.OCT_MATERIAL_ROUGHNESS_FLOAT] = 0.3
@@ -467,7 +467,7 @@ class convertToRedshift:
                     # Bump Node:
                     NodeBump = gvNodeMaster.CreateNode(nodeRoot, 1036227, None, 200, 150)  # Always use this to create any nodeee!!!
                     NodeBump[c4d.GV_REDSHIFT_SHADER_META_CLASSNAME] = 'BumpMap'  # This defines the node!!!
-                    NodeBump[c4d.REDSHIFT_SHADER_BUMPMAP_SCALE] = 0.05
+                    NodeBump[c4d.REDSHIFT_SHADER_BUMPMAP_SCALE] = 0.5
                     # Texture Node:
                     NodeTexture = gvNodeMaster.CreateNode(nodeRoot, 1036227, None, 80, 150)  # Always use this to create any nodeee!!!
                     NodeTexture[c4d.GV_REDSHIFT_SHADER_META_CLASSNAME] = 'TextureSampler'  # This defines the node!!!
@@ -851,7 +851,7 @@ class autoAlignArms():
 
 class connectEyeLashesMorphXpresso:
     xtag = None
-    
+
 
     def connectMorphsXpresso(self, morphMain, morphTagMain, morphTagSlave):
         xtag = c4d.BaseTag(c4d.Texpresso)
@@ -1091,7 +1091,7 @@ class dazToC4Dutils():
 
         if texturePath == '':
             return None
-        
+
         if texturePath:
             texturePath = os.path.abspath(texturePath)  # OS Path Fix...
 
@@ -3793,7 +3793,7 @@ class DazToC4D():
 
     def stdMatExtrafixes(self):
         doc = c4d.documents.GetActiveDocument()
-        
+
         #--- Fix duplicated Moisture material...??
         myMaterials = doc.GetMaterials()
         for mat in myMaterials:
@@ -4332,7 +4332,7 @@ class DazToC4D():
             matName = mat.GetName()
             mat[c4d.OCT_MATERIAL_SPECULAR_COLOR] = c4d.Vector(0.0, 0.0, 0.0)
             mat[c4d.OCT_MATERIAL_INDEX] = 2
-            
+
             extraMapGlossyRough = dazToC4Dutils().findTextInFile(matName, 'Glossy_Roughness_Map')
             if extraMapGlossyRough != None:
                 # c4d.gui.MessageDialog(extraMapGlossyRough)
@@ -4346,7 +4346,7 @@ class DazToC4D():
                 shd[c4d.IMAGETEXTURE_GAMMA] = 2.2
                 shd[c4d.IMAGETEX_BORDER_MODE] = 0
                 doc.InsertMaterial(mat)
-            
+
             extraMapSpec = dazToC4Dutils().findTextInFile(matName, 'Glossy_Layered_Weight_Map')
             extraMapSpec2 = dazToC4Dutils().findTextInFile(matName, 'spec')
             extraMapGlossy = dazToC4Dutils().findTextInFile(matName, 'Metallicity_Map')
@@ -6222,7 +6222,7 @@ class DazToC4D():
 
         DazToC4D().addLipsMaterial() # Add Lips Material
         dazObj = dazToC4Dutils().getDazMesh()
-        
+
         DazToC4D().morphsFixRemoveAndRename()
         xpressoTag = connectEyeLashesMorphXpresso()
         morphsGroup = DazToC4D().moveMorphsToGroup(dazObj)
