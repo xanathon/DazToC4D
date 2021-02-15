@@ -467,7 +467,7 @@ class convertToRedshift:
                     # Bump Node:
                     NodeBump = gvNodeMaster.CreateNode(nodeRoot, 1036227, None, 200, 150)  # Always use this to create any nodeee!!!
                     NodeBump[c4d.GV_REDSHIFT_SHADER_META_CLASSNAME] = 'BumpMap'  # This defines the node!!!
-                    NodeBump[c4d.REDSHIFT_SHADER_BUMPMAP_SCALE] = 0.5
+                    NodeBump[c4d.REDSHIFT_SHADER_BUMPMAP_SCALE] = 0.5 
                     # Texture Node:
                     NodeTexture = gvNodeMaster.CreateNode(nodeRoot, 1036227, None, 80, 150)  # Always use this to create any nodeee!!!
                     NodeTexture[c4d.GV_REDSHIFT_SHADER_META_CLASSNAME] = 'TextureSampler'  # This defines the node!!!
